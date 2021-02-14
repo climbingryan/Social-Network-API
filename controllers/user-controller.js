@@ -42,6 +42,16 @@ const userController = {
             .catch(err => res.status(400).json(err));  
     },
 
+    createNewFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.userId },
+            { $push: { friends: params.friendId  } },
+            { new: true }
+        )
+        .then(dbData => res.json(dbData))
+        .catch(err => res.json(err));
+    },
+
     updateUser({params, body}, res) {
         console.log(params);
         console.log('==========');
