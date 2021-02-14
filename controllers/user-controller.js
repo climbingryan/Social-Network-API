@@ -6,7 +6,7 @@ const userController = {
         User.find({})
             .populate({
                 path: 'thoughts',
-                select: '-__v'
+                select: '-__v -thoughtText -username -createdAt'
             })
             .select('-__v')
             .then(dbUserData => res.json(dbUserData))
@@ -43,6 +43,8 @@ const userController = {
     },
 
     updateUser({params, body}, res) {
+        console.log(params);
+        console.log('==========');
         User.findOneAndUpdate({ _id: params.id}, body, { new: true, runValidators: true })
             .then(dbUserData => {
                 if (!dbUserData) {

@@ -41,6 +41,9 @@ const thoughtController = {
     createThought({ body }, res) {
         Thought.create(body)
             .then(({ _id }) => {
+                // const {thoughtText, username, ...id} = body;
+                // console.log(id);
+                // console.log('===========')
                 return User.findOneAndUpdate(
                     { _id: body.userId },
                     { $push: { thoughts: _id } },
@@ -55,14 +58,7 @@ const thoughtController = {
     },
     // UPDATE by Id
     updateThoughtById({ params, body }, res) {
-        Thought.findOneAndUpdate({ _id: params.thoughtId }, body, { new: true, runValidators: true })
-            .then(({ _id }) => {
-                return User.findByIdAndUpdate(
-                    { id: params.userId },
-                    { $push: { thought: _id } },
-                    { new: true }
-                )
-            })
+        Thought.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
               .then(dbThoughtData => {
                   if (!dbThoughtData) {
                     res.status(404).json({ message: 'No user found with this id!' })
