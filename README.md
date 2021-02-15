@@ -11,3 +11,7 @@ To use this api be sure to have mongoDb and node.js installed. You won't be able
 
 ### Usage
 This api allows you to use CRUD methods on Users & Thoughts, as well as create and delete Friends and Reactions. Users can friend each other, Create thoughts (kinda like posts) and post reactions to other peoples thoughts. The api is built, all it needs is a front-end and it's ready to go! 
+
+### Routes
+[Thought Routes](https://drive.google.com/file/d/1LMXMgsV9IvhE3MjuJrqKHDfnmEEueIPG/view)
+[Friend Routes](https://drive.google.com/file/d/1393LE6F3eMSpjMX5JDsPbpI4mzRfOJh-/view)
